@@ -33,14 +33,130 @@ code {
   left: 0;
   width: 50vw;
   height: 100vh;
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0.8);
   display: flex;
   align-items: center;
   justify-content: center;
+  backdrop-filter: blur(50px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.signs-container{
+  /* display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  height: auto; */
+  width: 96%;
+  height: auto;
+  margin-top: 4%;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-auto-rows: 15%;
+}
+
+.sign-tile{
+  /* width: calc(100% / 10 - 20px);
+  height: 14%; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.9);
+  backdrop-filter: blur(50px);
+  border-radius: 7px;
+  margin: 10px;
+  padding: 10% 5%;
+  transition: all 0.2s ease-in-out;
+}
+
+.sign-tile:hover{
+  background-color: rgba(255, 255, 255, 0.03);
+  box-shadow: 0px 0px 15px 0px rgba(255, 255, 255, 0.1);
+}
+
+.sign-img{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: invert(1);
+  opacity: 0.5;
+  transition: all 0.2s ease-in-out;
+}
+
+.sign-img:hover{
+  opacity: 0.9;
+  transform: scale(1.1);
+}
+
+.sign-img.active{
+  opacity: 0.9;
+  transform: scale(1.1);
+}
+
+.show-text-container{
+  width: 95%;
+  height: 35%;
+  background-color: rgba(255, 255, 255, 0.05);
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 3%;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .text{
   font-size: 100px;
   font-weight: 600;
   color: white;
+}
+
+.canvas{
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.developer-elements{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 30;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  color: white;
+  padding: 10px;
+  font-size: 12px;
+}
+
+.icon-container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 3px 8px;
+  background-color: rgba(27, 27, 27, 0.3);
+  justify-content: space-between;
+  border-radius: 5px;
+  text-decoration: none;
+  margin-top: 5px;
+}
+
+.icon-container:hover{
+  background-color: rgba(27, 27, 27, 0.5);
+  cursor: pointer;
+}
+
+.icon{
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+.github{
+  color: white;
+  font-weight: 600;
 }
