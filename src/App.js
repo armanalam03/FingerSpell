@@ -8,7 +8,6 @@
 // 8. Draw functions DONE
 
 import React, { useEffect, useRef, useState } from "react";
-// import logo from './logo.svg';
 import * as tf from "@tensorflow/tfjs";
 import * as handpose from "@tensorflow-models/handpose";
 import Webcam from "react-webcam";
@@ -78,17 +77,12 @@ function App() {
 
       // Make Detections
       const hand = await net.estimateHands(video);
-      // console.log(hand);
 
       //Gesture Detection
       if(hand.length>0){
         const GE = new fp.GestureEstimator([
           /* fp.Gestures.ThumbsUpGesture,
           fp.Gestures.VictoryGesture, */
-          /* Letter_A,
-          Letter_B,
-          Letter_C,
-          Letter_D, */
           aSign,
           bSign,
           cSign,
@@ -192,9 +186,11 @@ function App() {
           }}
         />
         <div className="textContainer">
+          <div className="navbar">
+            <span className="nav-text">FingerSpell</span>
+          </div>
           <div className="signs-container">
             {
-              /* imageTiles() */
               letters.map((letter) => {
                 return (
                   <div className="sign-tile" key={letter}>
@@ -209,12 +205,12 @@ function App() {
           </div>
         </div>
         <div className="developer-elements">
-          <span className="credit"><em>created by:</em></span>
-          <span className="developer-name"><b>Armaan Alam</b></span>
-          <a className="icon-container" href="https://github.com/armanalam03/SignLanguage">
-            <img src={require(`./githubIcon.png`)} className="icon" />
-            <span className="github">Github</span>
-          </a>
+          <span className="credit"><em>created by: <b> Armaan Alam</b> | </em></span>
+          <span className="developer-name"></span>
+          <div className="icon-container">
+            <a href="https://github.com/armanalam03/SignLanguage"><img src={require(`./icons/github.png`)} className="icon" /></a>
+            <a href="https://www.linkedin.com/in/armaanalam"><img src={require(`./icons/linkedin.png`)} className="icon" /></a>
+          </div>
         </div>
     </div>
   );
