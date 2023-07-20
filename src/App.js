@@ -7,7 +7,7 @@
 // 7. Drawing utilities DONE
 // 8. Draw functions DONE
 
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 // import logo from './logo.svg';
 import * as tf from "@tensorflow/tfjs";
 import * as handpose from "@tensorflow-models/handpose";
@@ -49,7 +49,7 @@ function App() {
 
   const runHandpose = async () => {
     const net = await handpose.load();
-    // console.log("Handpose model loaded.");
+    console.log("Handpose model loaded.");
     //  Loop and detect hands
     setInterval(() => {
       detect(net);
@@ -128,7 +128,11 @@ function App() {
           console.log(gesture.gestures[maxConfidence].name)
           setText(gesture.gestures[0].name) */
           console.log(gesture.gestures)
-          setText(gesture.gestures[0].name)
+          if(gesture.gestures[0].name != null){
+            setText(gesture.gestures[0].name)
+          } else {
+            setText(null)
+          }
         }
         // console.log(gesture.gestures[0].name)
         // setText(gesture.gestures[0].name)
@@ -141,6 +145,20 @@ function App() {
   };
 
   runHandpose();
+
+  const letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+
+  useEffect(()=>{
+    const images = document.querySelectorAll(".sign-img")
+    images.forEach(img => {
+      if(text === img.dataset.letter){
+        img.classList.add("active")
+      } else {
+        img.classList.remove("active")
+      }
+    }) 
+  }, [text]);
+
 
   return (
     <div className="App">
@@ -174,7 +192,29 @@ function App() {
           }}
         />
         <div className="textContainer">
-          <span className="text">{text}</span>
+          <div className="signs-container">
+            {
+              /* imageTiles() */
+              letters.map((letter) => {
+                return (
+                  <div className="sign-tile" key={letter}>
+                    <img src={require(`../public/images/right/${letter}.png`)} data-letter={letter} className="sign-img"/>
+                  </div>
+                )
+              })
+            }
+          </div>
+          <div className="show-text-container">
+            <span className="text">{text}</span>
+          </div>
+        </div>
+        <div className="developer-elements">
+          <span className="credit"><em>created by:</em></span>
+          <span className="developer-name"><b>Armaan Alam</b></span>
+          <a className="icon-container" href="https://github.com/armanalam03/SignLanguage">
+            <img src={require(`./githubIcon.png`)} className="icon" />
+            <span className="github">Github</span>
+          </a>
         </div>
     </div>
   );
