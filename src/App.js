@@ -14,6 +14,8 @@ import Webcam from "react-webcam";
 import "./App.css";
 import { drawHand } from "./utilities";
 import * as fp from "fingerpose"
+import toast, { Toaster } from 'react-hot-toast';
+
 import {aSign} from "./gestures/Asign.js"
 import {bSign} from "./gestures/Bsign.js"
 import {cSign} from "./gestures/Csign.js"
@@ -44,7 +46,22 @@ import {zSign} from "./gestures/Zsign.js"
 function App() {
   const webcamRef = useRef(null);
   const canvasRef = useRef(null);
-  const [text, setText] = useState(null);
+  const [text, setText] = useState("");
+
+  useEffect(() => {
+    toast(
+      "Welcome to FingerSpell. Learning and practice American Sign Language in real-time.\n\nKindly show your hand to the webcam where it is clearly visible.",
+      {
+        duration: 7000,
+        style: {
+          borderRadius: '10px',
+          background: '#171717',
+          color: '#fff',
+          boxShadow: '0 0 15px -3px #000000',
+        }
+      }
+    );
+  }, []);
 
   const runHandpose = async () => {
     const net = await handpose.load();
@@ -121,11 +138,11 @@ function App() {
           )
           console.log(gesture.gestures[maxConfidence].name)
           setText(gesture.gestures[0].name) */
-          console.log(gesture.gestures)
-          if(gesture.gestures[0].name != null){
+          // console.log(gesture.gestures)
+          if(gesture.gestures[0].name != ""){
             setText(gesture.gestures[0].name)
           } else {
-            setText(null)
+            setText("")
           }
         }
         // console.log(gesture.gestures[0].name)
@@ -152,16 +169,51 @@ function App() {
       }
     }) 
   }, [text]);
+  
 
+  const [camSize, setCamSize] = useState({
+    width: "",
+    height: "",
+  })
+  window.onload = function(){
+    const webcam = document.getElementById("webcam")
+    setCamSize({
+      width: webcam.offsetWidth,
+      height: webcam.offsetHeight,
+    })
+  }
+
+  const [windowSize, setWindowSize] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight,
+  })
+  window.onresize = function(){
+    setWindowSize({
+      width: window.innerWidth,
+      height: window.innerHeight,
+    })
+    const webcam = document.getElementById("webcam")
+    setCamSize({
+      width: webcam.offsetWidth,
+      height: webcam.offsetHeight,
+    })
+  }
+  
 
   return (
     <div className="App">
+      <Toaster />
+      <div className="window_sizes" id="window_sizes">
+        <span className="window_size">Window Size: {windowSize.width} x {windowSize.height}</span>
+      </div>
         <Webcam
           ref={webcamRef}
           mirrored = "false"
           minScreenshotHeight = "808"
           minScreenshotWidth = "720"
-          style={{
+          className="webcam"
+          id="webcam"
+          /* style={{
             position: "absolute",
             right: 0,
             textAlign: "center",
@@ -169,13 +221,18 @@ function App() {
             width: 1077,
             height: 808,
             filter: "grayscale(100%)",
-          }}
+          }} */
         />
 
         <canvas
           ref={canvasRef}
           className="canvas"
+          id="canvas"
           style={{
+            width: camSize.width,
+            height: camSize.height,
+          }}
+          /* style={{
             position: "absolute",
             right: 0,
             textAlign: "center",
@@ -183,7 +240,7 @@ function App() {
             width: 1077,
             height: 808,
             transform: "scale(-1, 1)",
-          }}
+          }} */
         />
         <div className="textContainer">
           <div className="navbar">
