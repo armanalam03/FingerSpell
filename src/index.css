@@ -17,6 +17,24 @@ code {
     monospace;
 }
 
+.webcam{
+  position: absolute;
+  right: 0;
+  text-align: center;
+  z-index: 9;
+  width: 1077px;
+  height: 808px;
+  filter: grayscale(100%);
+}
+
+.canvas{
+  position: absolute;
+  right: 0;
+  text-align: center;
+  z-index: 10;
+  transform: scale(-1, 1);
+}
+
 .textContainer{
   position: absolute;
   z-index: 20;
@@ -26,12 +44,12 @@ code {
   background-color: rgba(0, 0, 0, 0.8);
   display: flex;
   align-items: center;
-  justify-content: center;
   backdrop-filter: blur(50px);
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
+  overflow-y: auto;
 }
 
 .navbar{
@@ -44,7 +62,8 @@ code {
   font-size: 23px;
   letter-spacing: 10px;
   color: white;
-  margin-top: 2%;
+  /* margin-top: 5%; */
+  padding-top: 5%;
 }
 
 .signs-container{
@@ -52,8 +71,26 @@ code {
   height: auto;
   margin-top: 3%;
   display: grid;
-  grid-template-columns: repeat(8, 1fr);
-  grid-auto-rows: 15%;
+  grid-template-columns: repeat(9, 1fr);
+  grid-auto-rows: 9vw;
+}
+
+/* @media screen and (max-width: 1600px) {
+  .signs-container{
+    grid-template-columns: repeat(8, 1fr);
+  }
+} */
+@media screen and (max-width: 1200px) {
+  .signs-container{
+    grid-template-columns: repeat(7, 1fr);
+    /* grid-auto-rows: 30vw; */
+  }
+}
+@media screen and (max-width: 1000px) {
+  .signs-container{
+    grid-template-columns: repeat(6, 1fr);
+    /* grid-auto-rows: 30vw; */
+  }
 }
 
 .sign-tile{
@@ -96,7 +133,6 @@ code {
   width: 85%;
   height: 30%;
   background-color: rgba(255, 255, 255, 0.05);
-  position: absolute;
   bottom: 0;
   display: flex;
   align-items: center;
@@ -150,3 +186,82 @@ code {
 .icon:hover{
   background-color: rgba(27, 27, 27, 0.2);
 }
+
+.window_sizes{
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 30;
+  background-color: rgba(0, 0, 0, 0.4);
+  color: white;
+}
+
+
+@media screen and (max-width: 850px) {
+  .App{
+    flex-direction: column;
+    align-items: center;
+  }
+  .webcam{
+    width: 100vw;
+    height: 50vh;
+    bottom: 0;
+    left: 0;
+    z-index: 9;
+  }
+  .canvas{
+    width: 100vw;
+    height: 50vh;
+    bottom: 0;
+    left: 0;
+    z-index: 15;
+  }
+  .textContainer{
+    width: 100vw;
+    height: 50vh;
+    top: 0;
+    left: 0;
+    z-index: 20;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+    /* overflow-y: auto; */
+  }
+  .navbar{
+    position: absolute;
+    top: 0;
+    right: 20px;
+    width: auto;
+    font-size: 3vw;
+  }
+  .show-text-container{
+    width: 70vw;
+    height: 50%;
+    margin: 2%;
+  }
+  .signs-container{
+    grid-template-columns: repeat(7, 1fr);
+    grid-auto-rows: 11vw;
+    padding: 2%;
+  }
+  .sign-tile{
+    margin: 5px;
+    border: 1px solid white;
+  }
+  @media screen and (max-width: 700px) {
+    .signs-container{
+      grid-template-columns: repeat(6, 1fr);
+      grid-auto-rows: 12vw;
+    }
+  }
+  @media screen and (max-width: 550px) {
+    .signs-container{
+      grid-template-columns: repeat(5, 1fr);
+      grid-auto-rows: 12vw;
+    }
+  }
+    
+  }
