@@ -262,11 +262,11 @@ function App() {
           </div>
         </div>
         <div className="developer-elements">
-          <span className="credit"><em>created by: <b> Armaan Alam</b> | </em></span>
+          <span className="credit"><em>created by: <b> Sourabh Singhroha</b> | </em></span>
           <span className="developer-name"></span>
           <div className="icon-container">
-            <a href="https://github.com/armanalam03/SignLanguage"><img src={require(`./icons/github.png`)} className="icon" /></a>
-            <a href="https://www.linkedin.com/in/armaanalam"><img src={require(`./icons/linkedin.png`)} className="icon" /></a>
+            <a href="https://github.com/SourabhSinghroha/Fingerspell"><img src={require(`./icons/github.png`)} className="icon" /></a>
+            <a href="https://www.linkedin.com/in/sourabh-singhroha-b806b31b9"><img src={require(`./icons/linkedin.png`)} className="icon" /></a>
           </div>
         </div>
     </div>
