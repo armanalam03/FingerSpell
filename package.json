@@ -22,7 +22,12 @@
     "eject": "react-scripts eject"
   },
   "engines": {
-    "node": "20.x"
+    "node": "18.x"
+  },
+  "overrides": {
+    "ajv": "8.12.0",
+    "ajv-keywords": "5.1.0",
+    "schema-utils": "4.2.0"
   },
   "eslintConfig": {
     "extends": "react-app"
