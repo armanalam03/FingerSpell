@@ -22,7 +22,7 @@
     "eject": "react-scripts eject"
   },
   "engines": {
-    "node": "18.x"
+    "node": "20.x"
   },
   "overrides": {
     "ajv": "8.12.0",
