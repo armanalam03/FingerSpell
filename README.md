@@ -1,26 +1,60 @@
-# What's FingerSpell
+# FingerSpell
 
-FingerSpell is an application enabling real-time learning and practice of American Sign Language. It utilizes a model trained on an extensive dataset of hand posture images corresponding to each alphabet. Currently, it achieves 85% accuracy in recognizing all 26 letters. My goal is to enhance accuracy to 98%.
+FingerSpell is an application enabling real-time learning and practice of American Sign Language. It utilizes a model trained on an extensive dataset of hand posture images corresponding to each alphabet. Currently, it achieves 85% accuracy in recognizing all 26 letters.
+
+## Tech Stack
+
+- **React 19** - UI Library
+- **Vite 7** - Build Tool & Dev Server
+- **TypeScript** - Type Safety
+- **TensorFlow.js** - Machine Learning
+- **Handpose Model** - Hand Detection
+- **Fingerpose** - Gesture Recognition
+- **React Webcam** - Camera Access
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js 18+ (LTS recommended)
+- npm or yarn
+
+### Installation
+
+```bash
+cd fingerspell-vite
+npm install
+```
+
+### Development
+
+```bash
+npm run dev
+```
+
+The app will open at `http://localhost:5173`
+
+### Production Build
+
+```bash
+npm run build
+npm run preview
+```
+
+## Deployment
+
+This project is configured for Vercel deployment. Simply connect your repository to Vercel and it will automatically detect the Vite framework.
 
 ## Usage
 
-```
-npm install --legacy-peer-deps
+1. Allow camera access when prompted
+2. Position your hand clearly in front of the webcam
+3. Make ASL letter signs with your hand
+4. The app will detect and display the recognized letter
 
-npm start
-```
-### Production
-Production link: [FingerSpell](https://fingerspell.vercel.app)
+## American Sign Language Reference
 
-## Technologies
-[![My Skills](https://skills.thijs.gg/icons?i=react,tensorflow,javascript,html,css&theme=dark)]()
-
-## American Sign Language
-![image](https://github.com/armanalam03/Finger-Spell/assets/39340406/21c34fb2-fb82-4ac1-b97a-de957d56d1ff)
-
-## Screenshot
-<img width="1072" alt="Screenshot 2023-07-21 212119" src="https://github.com/armanalam03/FingerSpell/assets/39340406/20d01b4a-7932-4fb4-99ae-f641fcfe992b">
-
+The app recognizes all 26 letters of the ASL alphabet (A-Z).
 
 ## License
 
